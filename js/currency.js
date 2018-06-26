@@ -1,20 +1,5 @@
  /* javascript */
   /* little polylling here */
-  function moneyFormat(price, sign = '$') {
-    const pieces = parseFloat(price).toFixed(2).split('')
-    let ii = pieces.length - 3
-    while ((ii-=3) > 0) {
-      pieces.splice(ii, 0, ',')
-    }
-    return sign + pieces.join('')
-  }
-  
-  console.log(
-    moneyFormat(100),
-    moneyFormat(1000),
-    moneyFormat(10000.00),
-    moneyFormat(1000000000000000000)
-  )
   Number.prototype.toCurrencyString = function(prefix, suffix) {
     prefix = typeof prefix === 'undefined' ?  '' : prefix;
     suffix = typeof suffix === 'undefined' ?  '' : suffix;
