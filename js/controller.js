@@ -1,95 +1,36 @@
+
 const registerServiceWorker = () => {
-  if (!navigator.serviceWorker) return;
+  if (!navigator.serviceWorker) return toast('Service Worker not supported');
 
-      navigator.serviceWorker.register('./serviceWorker.js', {scope: './'})
-      .then( (registration) => { 
-          if (!navigator.serviceWorker.controller) return;
+  navigator.serviceWorker.register('./serviceWorker.js', {scope: './'})
+  .then((registration) => {
+  console.log('welcome home again');
+      // checking if controller is true/false
+      if (!navigator.serviceWorker.controller) return;
 
-          // check if serviceWorker is waiting in queue
-          if(registration.waiting){
-            toast('new version is available', waitingServiceWorker())
-            return;
-          }
-          // check installing serviceWorker state
-          if(registration.installing){
-            installingServiceWorker(registration.installing);
-            return;
-          }
-          // update serviceWorker
-          if(updateServiceWorker(registration)){
-            return toast('updated to new verson');
-          }
-      }, (err) => {
-        toast(`Its like we Got little Issues with Network`);
+      if(registration.waiting){
+        toast('New Version Available', 'updateServiceWorker');
+        registration.waiting.postMessage('skipWaiting');
+        return;
+      }
+      if (registration.installing){
+        serviceWorkerInstallation(registration.installing);
+        return;
+      }
+
+      registration.addEventListener('updatefound', () => {
+        serviceWorkerInstallation(registration.installing);
+        return;
       });
-}
-
-const updateServiceWorker = (state) => {
-  state.addEventListener('updatefound', ()=>{
-    installingServiceWorker(state);
   })
-  return;
+  .catch((err) => {
+    console.log(`Error: SR2312, ${err}`)
+  })
 }
-
-const installingServiceWorker = (status) => {
-  status.addEventListener('statechange', ()=>{
-    if(status.state == 'installed'){
-      toast('page updated new verson')
+const serviceWorkerInstallation = (status) =>{
+  status.addEventListener('statechange', () => {
+    if (status.state == 'installed'){
+      toast('you are now using latest version');
     }
   })
 }
-
-const waitingServiceWorker = (state) => {
-
-}
-
-// caching
-
-const initializeCache = (cacheName, cacheFiles) => {
-  caches.open(cacheName)
-  .then((cache) => {
-    return cache.addAll(cacheFiles);
-  })
-}
-
-const activateCache = (cacheName) => {
-  caches.keys()
-  .then( (keys) => {
-      return Promise.all(keys.map((key, i) => {
-          if(key !== cacheName){
-              return caches.delete(keys[i]);
-          }
-      }))
-  })
-}
-
-const checkCache = (event) => {
-  caches.match(event.request)
-  .then((response) => {
-    return false;
-    // check for request exist and return request on true
-    if (response)  return response;
-    // check server for request if not exist
-    _ServerResponse(event);
-  })
-}
-
-const openCaches = (request, response) => {
-  caches.open (cachNameVersion)
-  .then((cache) => {
-    cache.put(request, response);
-  })
-}
-
-const _ServerResponse = (event) => {
-  let url = event.request.clone();
-  fetch(url)
-  .then((response)=>{
-      if (response || response.status == 200 || response == 'basic') return res;
-
-      openCaches(event.request, response.clone());
-
-      return response;
-  })
-}
-
