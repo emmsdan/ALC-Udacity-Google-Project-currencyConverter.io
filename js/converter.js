@@ -2,13 +2,10 @@
 
 /* 
   define varibles
-/
+*/
 const APIDomain = 'https://free.currencyconverterapi.com/api/v5/';
 const APIRoute = {'convert':'convert', 'currency': 'currencies', 'country':'countries'};
-*/
-const APIDomain = '/api/';
-const APIRoute = {'convert':'convert', 'currency': 'currencies.json', 'country':'countries.json'};
-//*/
+
 /* users form */
 const convertButton = document.querySelector('#userSubmit');
 const amount = document.querySelector('#amountInput');
