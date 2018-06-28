@@ -1,24 +1,36 @@
+
+/* reset browser default */
+*,*:before,*:after{
+  margin: 0;
+  padding: 0;
+  box-sizing: content-box;
+  background: #eee;
+  color: #003;    
+  box-sizing:inherit
+}
+html{
+  box-sizing:border-box
+  -ms-text-size-adjust:100%;
+  -webkit-text-size-adjust:100%
+}
+html,body{
+  font-family:Verdana,sans-serif;
+  line-height:1.5;
+  overflow-x:hidden
+}
+    body{
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      width: 100%;
+        height: 100%;
+    }
 /* color */
 .blue {
   background: #0277bd !important;
 }
-
-/* reset browser default */
-    *{
-        margin: 0;
-        padding: 0;
-        box-sizing: content-box;
-        background: #eee;
-        color: #003;    
-        font-weight: bold;
-        font-family: 'Inconsolata', Monaco, Consolas, 'Andale Mono', monospace;
-    }
-    body{
-        width: 100%;
-        height: 100%;
-    }
 /* header area */
     .header{
+        font-weight: bold;
+        font-family: 'Inconsolata', Monaco, Consolas, 'Andale Mono', monospace;
         color: #263238;
         padding: 10px;
         width: 70%;
@@ -129,7 +141,7 @@ select{
 }
 .exchangeRate{
   font-size: 5.5vmax;
-  text-align: center;
+  otext-align: center;
 }
 .outputDigit .exchangeRate::before{
   content: "exchange rate";
@@ -143,7 +155,7 @@ select{
   font-size: 3vmax;
   height: 7vmax;
   color: #eee;
-  background: #eb6137 !important;
+  background: #ff5722 !important;
 }
 .outputDigit .calculateorInput{
   font-size: 2vmax;
@@ -229,4 +241,74 @@ select{
     margin-top: -16px;
     margin-left: 27%;
   }
+}
+
+.hide{
+  display: none;
+}
+
+.toast{
+  display: none;
+  position: absolute;
+  top: 0%;
+  left: 30%;
+  background: #ff5722;
+  width: 40%;
+  height: 2vmax;
+  border-radius: 1px 1px 12px 12px;
+  overflow: hidden;
+  text-transform: capitalize;
+  font-size: 1vmax;
+  font-weight: 900;
+  animation:fading 10s infinite;
+}
+.toast .toastButton a{
+  position: absolute;
+  left: 83%;
+  top: 10%;
+  cursor: pointer;
+  background: transparent !important;
+  color: #012;
+  text-align: center;
+}
+.toast .toasted{
+  text-align: center;
+  font-stretch: ultra-condensed;
+  padding: 0.5vmax 2vmax;
+  background: inherit;
+  width: 72%;
+  position: absolute;
+  color: #fff;
+}
+
+
+/* special effects */
+.hide{
+  display:none!important;
+}
+.show{
+  display:block!important;
+  }
+.show-inline{
+  display:inline-block!important;
+}
+.spin{animation:w3-spin 2s infinite linear;}
+@keyframes w3-spin{
+  0%{transform:rotate(0deg)}
+  100%{transform:rotate(359deg)}
+}
+.fading{
+  animation:fading 10s infinite;
+}
+@keyframes fading{
+  0%{opacity:0}
+  50%{opacity:1}
+  100%{opacity:0}
+}
+.opacity{
+  animation:opac 0.8s;
+}
+@keyframes opac{
+  from{opacity:0} 
+  to{opacity:1}
 }
