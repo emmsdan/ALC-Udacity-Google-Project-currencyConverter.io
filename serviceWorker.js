@@ -1,4 +1,4 @@
-const cacheVersion = '0.2';
+const cacheVersion = '1.1';
 const cacheName = 'currencyConverter.io';
 const cachNameVersion= `${cacheName}-${cacheVersion}`;
 
