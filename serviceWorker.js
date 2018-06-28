@@ -12,6 +12,7 @@ const cachableFiles = [
   './index.html',
   './css/currency.css',
   './js/controller.js',
+  './js/polyfill-toast.js',
   './js/converter.js'
 ]
 
