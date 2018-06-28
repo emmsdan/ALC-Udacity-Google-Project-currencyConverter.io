@@ -9,7 +9,6 @@ const cachableAPI = [
 
 const cachableFiles = [
   './',
-  './img/currency_icon.png',
   './index.html',
   './css/currency.css',
   './js/controller.js',
