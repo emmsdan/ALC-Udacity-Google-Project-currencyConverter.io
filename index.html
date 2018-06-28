@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title> CurrencyConverter.io by EmmsDan for ALC</title>
-    <link rel="shortcut icon" type="image/png" href="./img/favicon.png"/>
     <link rel="stylesheet" href="css/currency.css"/>
   </head>
 <body>
@@ -25,31 +24,47 @@
       <button type="button" id="userSubmit">convert</button>
       <div class="exchangeRate"></div>
       
-      <div class="inputDigit" style="display: none;">
-          <button type="button" class="digit one">1</button>
-          <button type="button" class="digit two">2</button>
-          <button type="button" class="digit three">3</button>
-          <button type="button" class="digit four">4</button>
-          <button type="button" class="digit five">5</button>
-          <button type="button" class="digit six">6</button>
-          <button type="button" class="digit seven">7</button>
-          <button type="button" class="digit eight">8</button>
-          <button type="button" class="digit nine">9</button>
-          <button type="button" class="digit zero">10</button>
-          <button type="button" class="digit dot">.</button>
-          <button type="button" class="digit multi">x</button>
-          <button type="button" style="width: 45%;">calculator</button>
+      <br/>
+      <div class="inputDigit">
+          <button type="button" class="digit num one">1</button>
+          <button type="button" class="digit num two">2</button>
+          <button type="button" class="digit num three">3</button>
+          <button type="button" class="digit num four">4</button>
+          <button type="button" class="digit num five">5</button>
+          <button type="button" class="digit num six">6</button>
+          <button type="button" class="digit num seven">7</button>
+          <button type="button" class="digit num eight">8</button>
+          <button type="button" class="digit num nine">9</button>
+          <button type="button" class="digit num zero">0</button>
+          <button type="button" class="digit num dot">.</button>
+          <button type="button" class="digit num multi"> x </button>
+          <button type="button" class="digit clearCal"> CC </button>
+          <button type="button" style="width: auto;" class="calculatButton">calculator</button>
       </div>
-      <div class="outputDigit" style="display: none;">
-        <div class="calculateorOutput">1213123912312312</div>
-        <div class="calculateorInput">100000x1000000</div>
-          
+      <div class="outputDigit">
+        <div class="calculateorOutput"></div>
+        <div class="calculateorInput"></div>
       </div>
     </form>            
         </div>
-        <script src="js/converter.js"></script>
+        <div class="toast">
+          <div class="toasted"></div>
+          <div class="toastButton">
+          </div>
+        </div>
+        <script src="js/polyfill-toast.js"></script>
         <script src="js/controller.js"></script>
+        <script src="js/converter.js"></script>
         <script src="./serviceWorker.js"></script>
+        <script src="js/calculator.js"></script>
 
+        <script>
+        registerServiceWorker();
+        </script>
+        
 </body>
 </html>
+
+<!-- 
+    is sex, education good for our children
+-->
