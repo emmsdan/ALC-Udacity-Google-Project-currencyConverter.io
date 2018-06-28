@@ -1,19 +1,16 @@
 
 /* reset browser default */
-*,*:before,*:after{
-  margin: 0;
-  padding: 0;
-  box-sizing: content-box;
+*{
   background: #eee;
   color: #003;    
-  box-sizing:inherit
-}
+ }
 html{
-  box-sizing:border-box
+  box-sizing:border-box;
   -ms-text-size-adjust:100%;
-  -webkit-text-size-adjust:100%
+  -webkit-text-size-adjust:100%;
 }
 html,body{
+  box-sizing: content-box;
   font-family:Verdana,sans-serif;
   line-height:1.5;
   overflow-x:hidden
@@ -141,7 +138,6 @@ select{
 }
 .exchangeRate{
   font-size: 5.5vmax;
-  otext-align: center;
 }
 .outputDigit .exchangeRate::before{
   content: "exchange rate";
@@ -281,6 +277,14 @@ select{
   color: #fff;
 }
 
+@media all and (max-width: 700px){
+  .toast{
+    top: 0%;
+    left: 10%;
+    width: 80%;
+    height: 2.5vmax;
+  }  
+}
 
 /* special effects */
 .hide{
