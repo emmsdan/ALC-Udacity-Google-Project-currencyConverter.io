@@ -4,7 +4,7 @@
   * date @2018-june
 */
 
-const cacheVersion = '2.0';
+const cacheVersion = '1.0';
 const cacheName = 'currencyConverter.io';
 const cachNameVersion= `${cacheName}-${cacheVersion}`;
 
