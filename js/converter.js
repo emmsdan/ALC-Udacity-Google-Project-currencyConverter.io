@@ -13,7 +13,7 @@
 /* 
   define varibles
 */
-const APIDetectCurrency = 'http://www.geoplugin.net/json.gp?ip=${userID}';
+const APIDetectCurrency = 'http://gd.geobytes.com/GetCityDetails';
 const APIDomain = 'https://free.currencyconverterapi.com/api/v5/';
 const APIRoute = {'convert':'convert', 'currency': 'currencies', 'country':'countries'};
 /*/
@@ -63,9 +63,21 @@ const displayExchangeRate = (display) => {
 
 const setSelectOptions = (display, value) => {
   const getSelect = document.querySelectorAll('select');
-  for (let option of getSelect){
-    option.innerHTML += `<option value='${value}'> ${display}</option>`;
-  }
+  fetch (APIDetectCurrency)
+  .then((response) => {
+    return response.json();
+  })
+  .then((userInfo) => {
+    for (let option of getSelect){
+      userInfo.geobytescurrencycode == value ? option.innerHTML += `<option value='${value}' selected> ${display}</option>` : option.innerHTML += `<option value='${value}'> ${display}</option>`;
+    }
+  })
+  .catch((e) => {
+    for (let option of getSelect){
+      option.innerHTML += `<option value='${value}'> ${display}</option>`;
+    }
+  })
+  
 }
 
 /* start indexedDB */
