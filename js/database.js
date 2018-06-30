@@ -4,7 +4,7 @@
   * date @2018-june
 */
 
-const storeName = 'currencyConverterDB.io';
+const storeName = 'currencyConverterDB-io';
 /* 
   class for controlling IndexedDB storage 
   allows easy acces to database transactions like put, delete (not used), get and open.
