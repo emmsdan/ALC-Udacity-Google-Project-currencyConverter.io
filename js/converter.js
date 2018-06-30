@@ -13,7 +13,7 @@
 /* 
   define varibles
 */
-const APIDetectCurrency = 'http://www.geoplugin.net/json.gp';
+const APIDetectCurrency = 'http://api.ipstack.com/check?access_key=f06c29c95e4486ec01682aeec08aef8b';
 const APIDomain = 'https://free.currencyconverterapi.com/api/v5/';
 const APIRoute = {'convert':'convert', 'currency': 'currencies', 'country':'countries'};
 /*/
@@ -63,21 +63,9 @@ const displayExchangeRate = (display) => {
 
 const setSelectOptions = (display, value) => {
   const getSelect = document.querySelectorAll('select');
-  fetch (APIDetectCurrency)
-  .then((response) => {
-    return response.json();
-  })
-  .then((userInfo) => {
-    for (let option of getSelect){
-      userInfo.geoplugin_currencyCode == value ? option.innerHTML += `<option value='${value}' selected> ${display}</option>` : option.innerHTML += `<option value='${value}'> ${display}</option>`;
-    }
-  })
-  .catch((e) => {
-    for (let option of getSelect){
-      option.innerHTML += `<option value='${value}'> ${display}</option>`;
-    }
-  })
-  
+  for (let option of getSelect){
+    option.innerHTML += `<option value='${value}'> ${display}</option>`;
+  }  
 }
 
 /* start indexedDB */
@@ -99,7 +87,7 @@ const getCurrency = () => {
   .then ((jsonResponse)=>{
     const currency = jsonResponse.results;
     for(let key in currency){
-      setSelectOptions(`${currency[key].id} -- ${currency[key].currencyName}`, key)
+      setSelectOptions(`${currency[key].id} -- (${currency[key].currencySymbol}) -- ${currency[key].currencyName}`, key)
     }
   })
   .catch ((e)=>{
