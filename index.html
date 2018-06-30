@@ -5,40 +5,72 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title> CurrencyConverter.io by EmmsDan for ALC</title>
-    <link rel="stylesheet" href="css/currency.css"/>
+    <link rel="stylesheet" href="./css/alcproject.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Markazi+Text" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Galada" rel="stylesheet">
   </head>
 <body>
-  <div class="formContainer">
-    <div class="header">
-        Currency<empty></empty>Converter<span>@emmsdan.io</span>
-    </div>
-    <div class="notification"></div>
-    <form>
-      <input id="amountInput" placeholder="enter amount here"/>
-      <select id="currencyFrom" class="select">
-          <option> convert From </option>
-      </select>
-      <select id="currencyTo" class="select">
-          <option> convert to </option>
-      </select>
-      <button type="button" id="userSubmit">convert</button>
-      <div class="exchangeRate"></div>
-     <div class="toast">
-          <div class="toasted"></div>
-          <div class="toastButton">
-          </div>
+        <div id="snackbar" class="w3-red-text">Welcome to CurrencyConverter.io</div>
+    
+    <div class="w3-padding-64 w3-light-grey">
+      <div class="w3-row-padding">
+        <div class="w3-col l3 m3">
+          <img class="w3-image w3-round-large w3-hide-small w3-grayscale" src="img/51Tn1CC9wlL.png" alt="App" width="335" height="471">
         </div>
-         
-    </form>            
+        <div class="w3-col s12 m5">
+                <br/><br/><br/><br/>
+                <h1 class="w3-jumbo w3-xxxlarge  w3-text-red"><b>Currency<span style="font-size: 30px;" class="w3-text-blue">emmsdan.io</span><div style="margin-top: -4vmax; margin-left: 10vmax;">Converter.io</div>
+                </b></h1>
         </div>
-        <script src="js/polyfill-toast.js"></script>
-        <script src="js/controller.js"></script>
-        <script src="js/converter.js"></script>
-        <script src="./serviceWorker.js"></script>
+        <div class="w3-col s12 m3">
+                <ul class="w3-ul w3-card w3-hover-shadow">
+                  <li class="w3-dark-grey w3-center w3-xlarge w3-padding-16 Galada">Convert-Currency</li>
+                  <li class="">
+                      <label>Amount</label>
+                      <input type="number" id="amountInput" class="w3-input">
+                  </li>
+                  <li class="">
+                        <label>Convert From</label>
+                        <select class="w3-select" id="currencyFrom">
+                        </select>    
+                  </li>
+                  <li class="">
+                        <label>Convert To</label>
+                        <select class="w3-select" id="currencyTo">
+                        </select>    
+                  </li>
+                  <li class="w3-padding-24 exchange w3-row-padding w3-white">
+                     <span class="w3-text-red exchangeRate" style="font-weight: 900;">
+                         <img src="./img/AGNB-loading.gif" style="visibility: hidden;width: 100px;"/>
+                    </span>
 
-        <script>
-        registerServiceWorker();
-        </script>
-        
-</body>
+                     <button id="userSubmit" class="w3-button w3-teal w3-right w3-padding-large l12 m12 s12"><i class="fa fa-download"></i>Convert</button>
+                    
+                  </li>
+                </ul>
+              </div>              
+
+        </div>
+    
+    <!-- Footer -->
+    <footer class="w3-container w3-light-grey w3-center w3-xlarge"> <br/>
+      <div class="w3-section">
+        <i class="fa fa-facebook-official w3-hover-opacity"></i>
+        <i class="fa fa-instagram w3-hover-opacity"></i>
+        <i class="fa fa-snapchat w3-hover-opacity"></i>
+        <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+        <i class="fa fa-twitter w3-hover-opacity"></i>
+        <i class="fa fa-linkedin w3-hover-opacity"></i>
+      </div>
+      <p class="w3-medium">Powered by <strong><a href="https://free.currencyconverterapi.com" target="_blank" class="w3-hover-text-green">https://free.currencyconverterapi.com </a></strong></p>
+    </footer>    
+      
+    <script src="./js/emmsdanExtra.js"></script>
+    <script src="./js/controller.js"></script>
+    <script src="./js/database.js"></script>
+    <script src="./js/converter.js"></script>
+    <script src="./serviceWorker.js"></script>
+    <script>registerServiceWorker();</script>
+  
+  </body>
 </html>

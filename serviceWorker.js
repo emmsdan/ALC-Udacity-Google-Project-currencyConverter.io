@@ -1,19 +1,26 @@
-const cacheVersion = '1.2';
+const cacheVersion = '0.2';
 const cacheName = 'currencyConverter.io';
 const cachNameVersion= `${cacheName}-${cacheVersion}`;
 
+//*
 const cachableAPI = [
   'https://free.currencyconverterapi.com/api/v5/currencies',
-  'https://free.currencyconverterapi.com/api/v5/countries'
+  'https://fonts.googleapis.com/css?family=Markazi+Text',
+  'https://fonts.googleapis.com/css?family=Galada'
 ];
 
 const cachableFiles = [
   './',
+  './img/AGNB-loading.gif',
+  './img/51Tn1CC9wlL.png',
+  './img/calculator-icon.png',
   './index.html',
-  './css/currency.css',
+  './css/alcproject.css',
+  './js/emmsdanExtra.js',
   './js/controller.js',
-  './js/polyfill-toast.js',
-  './js/converter.js'
+  './js/converter.js',
+  './js/database.js',
+  './serviceWorker.js'
 ]
 
 self.addEventListener('install', (event) => {
@@ -21,7 +28,11 @@ self.addEventListener('install', (event) => {
     //get cache first time
     caches.open(cachNameVersion)
     .then((cache) => {
-      return cache.addAll(cachableFiles.concat(cachableAPI))
+      try {
+        return cache.addAll(cachableFiles.concat(cachableAPI))
+      }catch (e) {
+        return 'Could not Access Server';
+      }
     })
   );
 });
@@ -42,27 +53,37 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   let url = event.request.clone();
+  if (event.request.mode === 'navigate' || (event.request.method === 'GET' && event.request.headers.get('accept').includes('text/html'))) {
 
-  event.respondWith(
-    caches.match(event.request)
-    .then((res) => {
-      if(res){
-        return res;
-      }
-      return fetch(url)
-      .then((res) => {        
-        if(!res || res.status !== 200 || res.type !== 'basic'){
+    event.respondWith(
+      fetch(event.request).catch(error => {
+        console.log('Oops, You are offline, Currently');
+        return caches.match('index.html');
+      })
+    );
+  }else{
+    event.respondWith(
+      caches.match(event.request)
+      .then((res) => {
+        if(res){
           return res;
         }
-        let response = res.clone();
-        caches.open(cachNameVersion)
-        .then((cache) => {
-          cache.put(event.request, response);
-        });
-        return res;
+        return fetch(url).then((res) => {        
+          if(!res || res.status !== 200 || res.type !== 'basic'){
+            return res;
+          }
+          let response = res.clone();
+          caches.open(cachNameVersion)
+          .then((cache) => {
+            cache.put(event.request, response);
+          });
+          return res;
+        }).catch ((error)=> {
+          return error;        
+        })
       })
-    })
-  )
+    )
+  }
 });
 
 self.addEventListener('message', messageEvent => {
@@ -70,6 +91,5 @@ self.addEventListener('message', messageEvent => {
 });
 
 self.addEventListener('controllerchange', () => {
-  console.log('sdadasasd')
     window.location.assign('./');
 })
