@@ -44,6 +44,7 @@ const startDb = () => {
       console.log(`Error: SR2312, ${err}`)
     })
   }
+  registerServiceWorker();
 }
 
 /* check user is using the latest version */
