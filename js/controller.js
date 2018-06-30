@@ -27,8 +27,7 @@ const startDb = () => {
         if (!navigator.serviceWorker.controller) return;
 
         if(registration.waiting){
-          toast('New Version Available', 'updateServiceWorker');
-          registration.waiting.postMessage('skipWaiting');
+          serviceWorkerInstallation(registration.installing);
           return;
         }
         if (registration.installing){
@@ -52,7 +51,8 @@ const startDb = () => {
 const serviceWorkerInstallation = (status) =>{
   status.addEventListener('statechange', () => {
     if (status.state == 'installed'){
-      toast('you are now using latest version');
+          toast('New Version Available', 'updateServiceWorker');
+          registration.waiting.postMessage('skipWaiting');
     }
   })
 }
