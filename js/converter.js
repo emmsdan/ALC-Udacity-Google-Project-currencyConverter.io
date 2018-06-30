@@ -68,7 +68,7 @@ const getToCurrency = () => {
 
 const displayExchangeRate = (display) => {
   const { rate, date } = display;
-  return exchangeRate.innerHTML = `${getToCurrency()}${rate} <small>as @ ${date} </small>`;
+  return exchangeRate.innerHTML = `${getToCurrency()}${currency(rate, { useVedic: true }).format()} <small>as @ ${date} </small>`;
 }
 
 const setSelectOptions = (display, value) => {
