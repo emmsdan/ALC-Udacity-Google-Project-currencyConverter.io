@@ -1,4 +1,9 @@
-  /* 
+/* 
+  * author @emmsdan
+  * for @alc 3.0
+  * date @2018-june
+*
+/* 
       little polylling here 
       for converting money to currency type
   */
