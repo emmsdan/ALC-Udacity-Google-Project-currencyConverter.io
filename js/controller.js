@@ -36,7 +36,8 @@ const startDb = () => {
           return;
         }
         registration.addEventListener('updatefound', () => {
-          serviceWorkerInstallation(registration.installing);
+          toast('New Version Available', 'updateServiceWorker');
+          registration.waiting.postMessage('skipWaiting');
           return;
         });
     })
