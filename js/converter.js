@@ -1,4 +1,7 @@
-  /* little polylling here */
+  /* 
+      little polylling here 
+      for converting money to currency type
+  */
   
   String.prototype.toCurrencyString = (prefix, suffix) => {
     prefix = typeof prefix === 'undefined' ?  '' : prefix;
@@ -9,27 +12,29 @@
 
 /* javascript */
 
-/* load all varibles */
 /* 
-  define varibles
+  api routes and line
 */
-const APIDetectCurrency = 'http://api.ipstack.com/check?access_key=f06c29c95e4486ec01682aeec08aef8b';
+  
 const APIDomain = 'https://free.currencyconverterapi.com/api/v5/';
 const APIRoute = {'convert':'convert', 'currency': 'currencies', 'country':'countries'};
-/*/
-const APIDomain = '/api/';
-const APIRoute = {'convert':'convert', 'currency': 'currencies.json', 'country':'countries.json'};
-//*/
+
 /* users form */
 const convertButton = document.querySelector('#userSubmit');
 const amount = document.querySelector('#amountInput');
 const currencyTo = document.querySelector('#currencyTo');
 const currencyFrom = document.querySelector('#currencyFrom');
 
-/* div's and containers */
+/* div's and containers for displaying errors and final output */
 const notify = document.querySelector('.notification');
 const exchangeRate = document.querySelector('.exchangeRate');
 
+/* 
+  event listeners for the 
+    1. submit button,
+    2. user input and 
+    3. select options 
+*/
 convertButton.addEventListener('click', () => {
   checkData();
 });
@@ -68,17 +73,17 @@ const setSelectOptions = (display, value) => {
   }  
 }
 
-/* start indexedDB */
-
-
 /* 
-  start writing code
+  define url for current convertion
 */
-
 const getAPIUrl = (curFrom, curTo) => {
     return `${APIDomain}${APIRoute['convert']}?q=${curFrom}_${curTo}&compact=ultra`;
 }
 
+/* 
+  check api server for list of available currencies
+  and list them in the select list options
+*/
 const getCurrency = () => {
   fetch (`${APIDomain}${APIRoute['currency']}`)
   .then ((response)=>{
@@ -96,6 +101,15 @@ const getCurrency = () => {
     notify.innerText = e;
   })
 }
+/*
+  checks if exchange rate already exist in IndexDB
+      if true opens and supply user
+      else
+  check online for exchange rate
+      if true return and store in database
+      else return false. tell the user nothing like that exist
+*/
+   
 const getExchangeRate = () => {
   exchangeRate.innerHTML = "<img src='./img/AGNB-loading.gif'/>";
     const exchange = `${getFromCurrency()}_${getToCurrency()}`;
@@ -115,27 +129,22 @@ const getExchangeRate = () => {
     });
 };
 
+/* conversion of amount to be converted and exchange rate to requested amount*/ 
 const conversion = (dbcurrency, amount) => {
   if (dbcurrency) {
     return (Math.round((dbcurrency * amount) * 100) / 100);
   }
 }
 
+/* 
+  check if all neccessary fields are filled and currencies are selected 
+  before processing to exchange rate
+*/
 const checkData = () => {
   let returnInputs = getAmount() !== false && getToCurrency() !== 'convert to' && getFromCurrency() !== 'convert From' ? getExchangeRate() : amount.focus();
 }
 
-const storeEventListener = (storage) => {
-  document.querySelector('error.nothing').innerHTML += ` <store data='${storage.data}' class='${storage.id}'>`;
-}
-
-const getEventListener = (storage) => {
-  return document.querySelector(`store.${storage}`).getAttribute('data');
-}
-const getMonth = (id) =>{
-  const months = ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
-  return months[id];
-}
+/* get date from user */
 const getDate = () => {
   let date = new Date();
   let time = date.toLocaleTimeString();
@@ -145,9 +154,7 @@ const getDate = () => {
   hour = `${time[0]}:${time[1]} ${amPM[1]}`
     return `${date}, ${hour}`;
 }
-getCurrency();
-startDb();
-
+/* random colors for toast button */
 const colors = () => {
     const colors = ['blue', 'red', 'teal', 'blue-grey', 'black']
   return `w3-${colors[Math.floor(Math.random() * colors.length)]}`;
