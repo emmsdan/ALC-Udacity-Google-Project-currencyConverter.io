@@ -12,6 +12,7 @@ const storeName = 'currencyConverterDB-io';
 class LocalIndexedStorage {
 
   static open(dbName='exchangeCurrency', version=1) {
+   console.log('open a success');
     return new Promise((resolve, reject) => {
       if (!window.indexedDB) {
         const message = "This browser doesn't support a stable version of IndexedDB. This app won't work completely offline.";
@@ -43,7 +44,7 @@ class LocalIndexedStorage {
     return new Promise((resolve, reject) => {
       const transaction = db.transaction([storeName], "readwrite");
       transaction.addEventListener('complete', () => {
-        console.log('Saving complete');
+        console.log('I am Save');
       });
       const objectStore = transaction.objectStore(storeName);
       const request = objectStore.put({ id: key, value, dates });
