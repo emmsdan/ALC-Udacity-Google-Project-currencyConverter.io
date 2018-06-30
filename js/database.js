@@ -1,4 +1,14 @@
-const storeName = 'currency-converter-store';
+/* 
+  * author @emmsdan
+  * for @alc 3.0
+  * date @2018-june
+*/
+
+const storeName = 'currencyConverterDB.io';
+/* 
+  class for controlling IndexedDB storage 
+  allows easy acces to database transactions like put, delete (not used), get and open.
+*/
 class LocalIndexedStorage {
 
   static open(dbName='exchangeCurrency', version=1) {
@@ -23,6 +33,11 @@ class LocalIndexedStorage {
     })
   }
 
+  /* 
+    setExchangeRate() : 
+      used to insert new exchange rate into IndexDB
+  */
+  
   static setExchangeRate(key, value, db) {
     let dates = getDate();
     return new Promise((resolve, reject) => {
@@ -41,7 +56,10 @@ class LocalIndexedStorage {
       });
     });
   }
-
+/* 
+  removeExchangeRate() :
+    used to delete/remove from database.
+*/
   static removeExchangeRate(key, db) {
     return new Promise((resolve, reject) => {
       const request = db.transaction([storeName], 'readwrite')
@@ -51,7 +69,10 @@ class LocalIndexedStorage {
       request.addEventListener('success', () => {resolve(true)});
     });
   }
-
+/*
+  getExchangeRate() :
+    used to get date from IndexDB
+*/
   static getExchangeRate(key, db) {
     console.log('getExchangeRateDB')
     console.log(key);
