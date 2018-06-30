@@ -88,8 +88,8 @@ const getCurrency = () => {
     const currency = jsonResponse.results;
     let currencySymbol = '';
     for(let key in currency){
-      currencySymbol = currency[key].currencySymbol !== undefined ? currency[key].currencySymbol : '';
-      setSelectOptions(`${currency[key].id} -- ${currencySymbol} -- ${currency[key].currencyName}`, key)
+      currencySymbol = currency[key].currencySymbol !== undefined ? `-${currency[key].currencySymbol}-` : '';
+      setSelectOptions(`${currency[key].id} ${currencySymbol} ${currency[key].currencyName}`, key)
     }
   })
   .catch ((e)=>{
