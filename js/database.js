@@ -12,7 +12,6 @@ const storeName = 'currencyConverterDB-io';
 class LocalIndexedStorage {
 
   static open(dbName='exchangeCurrency', version=1) {
-   console.log('open a success');
     return new Promise((resolve, reject) => {
       if (!window.indexedDB) {
         const message = "This browser doesn't support a stable version of IndexedDB. This app won't work completely offline.";
@@ -26,7 +25,7 @@ class LocalIndexedStorage {
         resolve(result);
       })
       request.addEventListener('upgradeneeded', (event) => {
-        console.log('upgrade done', event)
+        console.log('Upgrade done', event.result)
         const { target: { result } } = event;
         const db = result;
         db.createObjectStore(storeName, { keyPath: 'id' });
@@ -44,7 +43,7 @@ class LocalIndexedStorage {
     return new Promise((resolve, reject) => {
       const transaction = db.transaction([storeName], "readwrite");
       transaction.addEventListener('complete', () => {
-        console.log('I am Save');
+        console.log('Data Stored');
       });
       const objectStore = transaction.objectStore(storeName);
       const request = objectStore.put({ id: key, value, dates });
@@ -75,8 +74,6 @@ class LocalIndexedStorage {
     used to get date from IndexDB
 */
   static getExchangeRate(key, db) {
-    console.log('getExchangeRateDB')
-    console.log(key);
     return new Promise((resolve, reject) => {
       const transaction = db.transaction(storeName);
       const objectStore = transaction.objectStore(storeName);
