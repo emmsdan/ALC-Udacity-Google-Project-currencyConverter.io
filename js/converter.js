@@ -137,7 +137,7 @@ const getExchangeRate = () => {
 /* conversion of amount to be converted and exchange rate to requested amount*/ 
 const conversion = (dbcurrency, amount) => {
   if (dbcurrency) {
-    return (currency(Math.round((dbcurrency * amount) * 100) / 100, { useVedic: true }).format());
+    return (currency(Math.round((dbcurrency * amount) * 100) / 100).format());
   }
 }
 
