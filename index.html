@@ -71,7 +71,12 @@
     <script src="./js/database.js"></script>
     <script src="./js/converter.js"></script>
     <script src="./serviceWorker.js"></script>
-    <script>registerServiceWorker();</script>
+    <script>
+      /* DB server, serviceWorker and get currency into select buttons */
+        getCurrency();
+        startDb();
+        registerServiceWorker();
+    </script>
   
   </body>
 </html>
