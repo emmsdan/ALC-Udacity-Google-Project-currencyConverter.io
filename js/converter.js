@@ -68,7 +68,7 @@ const getToCurrency = () => {
 
 const displayExchangeRate = (display) => {
   const { rate, date } = display;
-  return exchangeRate.innerHTML = `${getToCurrency()}${currency(rate, { useVedic: true }).format()} <small>as @ ${date} </small>`;
+  return exchangeRate.innerHTML = `${getToCurrency()}${rate} <small>as @ ${date} </small>`;
 }
 
 const setSelectOptions = (display, value) => {
@@ -137,7 +137,7 @@ const getExchangeRate = () => {
 /* conversion of amount to be converted and exchange rate to requested amount*/ 
 const conversion = (dbcurrency, amount) => {
   if (dbcurrency) {
-    return (currency(Math.round((dbcurrency * amount) * 100) / 100).format());
+    return (Math.round((dbcurrency * amount) * 100) / 100);
   }
 }
 
