@@ -1,14 +1,19 @@
+/* 
+  * author @emmsdan
+  * for @alc 3.0
+  * date @2018-june
+*/
+
 const cacheVersion = '1.0';
 const cacheName = 'currencyConverter.io';
 const cachNameVersion= `${cacheName}-${cacheVersion}`;
 
-//*
+/* add api files to be cached */
 const cachableAPI = [
   'https://free.currencyconverterapi.com/api/v5/currencies',
   'https://fonts.googleapis.com/css?family=Markazi+Text',
-  'https://fonts.googleapis.com/css?family=Galada'
 ];
-
+/* other files to be cached */
 const cachableFiles = [
   './',
   './img/AGNB-loading.gif',
@@ -25,7 +30,7 @@ const cachableFiles = [
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    //get cache first time
+    //add cache to system
     caches.open(cachNameVersion)
     .then((cache) => {
       try {
@@ -37,9 +42,9 @@ self.addEventListener('install', (event) => {
   );
 });
 
+/* removes old cached files and update it to the latest version */
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    //activate new cache
     caches.keys()
     .then( (keys) => {
         return Promise.all(keys.map((key, i) => {
@@ -51,6 +56,9 @@ self.addEventListener('activate', (event) => {
   )
 });
 
+/* 
+  handles all request made by the browser.
+*/
 self.addEventListener('fetch', (event) => {
   let url = event.request.clone();
   if (event.request.mode === 'navigate' || (event.request.method === 'GET' && event.request.headers.get('accept').includes('text/html'))) {
@@ -61,6 +69,7 @@ self.addEventListener('fetch', (event) => {
         return caches.match('index.html');
       })
     );
+    
   }else{
     event.respondWith(
       caches.match(event.request)
