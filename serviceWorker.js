@@ -5,7 +5,7 @@
 */
 
 const cacheVersion = '3.0';
-const cacheName = 'EmmsDan-currencyConverter.io';
+const cacheName = 'currencyConverter.io';
 const cachNameVersion= `${cacheName}-${cacheVersion}`;
 
 /* add api files to be cached */
