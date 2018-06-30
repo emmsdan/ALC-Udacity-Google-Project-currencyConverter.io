@@ -13,6 +13,7 @@
 /* 
   define varibles
 */
+const APIDetectCurrency = 'http://www.geoplugin.net/json.gp?ip=${userID}';
 const APIDomain = 'https://free.currencyconverterapi.com/api/v5/';
 const APIRoute = {'convert':'convert', 'currency': 'currencies', 'country':'countries'};
 /*/
