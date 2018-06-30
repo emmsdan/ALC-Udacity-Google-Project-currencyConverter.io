@@ -11,7 +11,7 @@ const toast = (msg, varibles= null) => {
   toastContainer.setAttribute('class', colors())
   toastContainer.innerHTML = `<span> ${msg} </span>`;
   
-  varibles != null ? toastContainer.innerHTML += `<a href='./?'> Update </a>`;
+  varibles != null ? toastContainer.innerHTML += `<a href='./?'> Update </a>` : '';
   
   toastContainer.classList.add('show');
   
