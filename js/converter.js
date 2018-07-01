@@ -146,7 +146,7 @@ const conversion = (dbcurrency, amount) => {
   before processing to exchange rate
 */
 const checkData = () => {
-  let returnInputs = getAmount() !== false && getToCurrency() !== 'convert to' && getFromCurrency() !== 'convert From' ? getExchangeRate() : amount.focus();
+  return getAmount() !== false && getToCurrency() !== 'convert to' && getFromCurrency() !== 'convert From' ? getExchangeRate() : amount.focus();
 }
 
 /* get date from user */
@@ -192,6 +192,7 @@ const getIndexDBList = () => {
       }
     })
   .catch((error) => {
-    return console.log(error);
+    console.log(error);
+   return;
   });
 }
