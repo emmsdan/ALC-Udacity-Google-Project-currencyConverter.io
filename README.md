@@ -4,8 +4,11 @@
 ## Here is the Link to the Project (http://bit.ly/EmmsDanALCProject)
 
   `AUTHOR'S NAME: EMMANUEL DANIEL`
+  
   `AUTHOR'S SLACK USERNAME: EMMSDAN`
+  
   `AUTHOR'S MEDIUM USERNAME: EMMSDAN`
+  
   `AUTHOR'S GITHUB USERNAME: EMMSDAN`
 
 ## ARCHITECTURE
