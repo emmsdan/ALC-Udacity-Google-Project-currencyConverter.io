@@ -182,7 +182,7 @@ const getIndexDBList = () => {
          return dateA - dateB;
      });
       for (let cur of localResponse) {
-        if ($count > 5) return;
+        if ($count > 3) return;
         let curr = cur['id'].split('_');
         exchangeTable.innerHTML += `<tr class="w3-hover-shadow w3-hover-blue-gray">
         <td>${curr[0]} to ${curr[1]} </td>
