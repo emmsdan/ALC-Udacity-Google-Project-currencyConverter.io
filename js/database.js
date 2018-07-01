@@ -89,6 +89,24 @@ class LocalIndexedStorage {
 
     });
   }
+ 
+ /* get records in indexedDB  sorted by date */
+   static getAllExchangeRate(db) {
+    return new Promise((resolve, reject) => {
+      const transaction = db.transaction(storeName);
+      const objectStore = transaction.objectStore(storeName);
+      const request = objectStore.getAll();
+      
+      request.addEventListener('error', (event) => {
+        reject(event.error)
+      });
+      request.addEventListener('success', (event) => {
+        resolve(event.target.result)
+      });
+
+    });
+  }
+
 }
 
 // explicitly export class to global scope
