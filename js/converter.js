@@ -55,7 +55,8 @@ currencyTo.addEventListener('change', () => {
 
 /* get user actions (clicks, inputs and selects) */
 const getAmount = () => {
-  return amount.value=='' ? false : amount.value;
+  let number = amount.value;
+ 	return	number != 'NaN' && number !== 'NaN' && number !== NaN && typeof number === 'number' ? number :  false ;
 }
 const getFromCurrency = () => {
   return currencyFrom.value=='' ? false : currencyFrom.value;
