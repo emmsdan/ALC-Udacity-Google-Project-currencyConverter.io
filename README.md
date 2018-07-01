@@ -27,6 +27,7 @@
   | ------- | ----------- |
   | Convert currencies | Use the latest exchange rates to convert currencies, quickly and conveniently |
   | Progresive Web Application | The app take an offline first approach, which means it works online and offline |
+  | Bonus (1) | Display Recent Exchange Rate |
 
 ## Dependencies
   ### BUILT WITH
