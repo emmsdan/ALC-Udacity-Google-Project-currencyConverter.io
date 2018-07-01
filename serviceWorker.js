@@ -10,22 +10,27 @@ const cachNameVersion= `${cacheName}-${cacheVersion}`;
 
 /* add api files to be cached */
 const cachableAPI = [
-  'https://free.currencyconverterapi.com/api/v5/currencies',
-  'https://fonts.googleapis.com/css?family=Markazi+Text',
+  'https://free.currencyconverterapi.com/api/v5/currencies'
 ];
 /* other files to be cached */
 const cachableFiles = [
   './',
   './img/AGNB-loading.gif',
   './img/51Tn1CC9wlL.png',
-  './img/calculator-icon.png',
   './index.html',
   './css/alcproject.css',
   './js/emmsdanExtra.js',
   './js/controller.js',
   './js/converter.js',
   './js/database.js',
-  './serviceWorker.js'
+  './serviceWorker.js',
+  './icons/icon-72x72.png',
+  './icons/icon-96x96.png',
+  './icons/icon-128x128.png',
+  './icons/icon-144x144.png',
+  './icons/icon-152x152.png',
+  './icons/icon-384x384.png',
+  './icons/icon-384x384.png',
 ]
 
 self.addEventListener('install', (event) => {
