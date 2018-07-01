@@ -73,7 +73,7 @@ const onlineConvertion = () => {
     return response.json();
   })
   .then ((jsonResponse)=>{
-    const currency = jsonResponse[`${toCurrency}_${fromCurrency}`];
+    const currency = jsonResponse[`${fromCurrency}_${toCurrency}`];
     //display exchange rate.
       displayExchangeRate({rate :conversion(currency, getAmount()), date: getDate()})
     // go online again and get the reserve for future use.
