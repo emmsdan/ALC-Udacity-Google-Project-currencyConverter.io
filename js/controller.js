@@ -68,7 +68,7 @@ const onlineConvertion = () => {
   let fromCurrency = getFromCurrency();;
   let toCurrency = getToCurrency();
     
-  fetch (getAPIUrl(toCurrency, fromCurrency))
+  fetch (getAPIUrl(fromCurrency, toCurrency))
   .then ((response)=>{
     return response.json();
   })
@@ -87,7 +87,7 @@ const onlineConvertion = () => {
   })
 }
 
-const onlineReverseConvertion = (fromCurrency, toCurrency) => {
+const onlineReverseConvertion = (toCurrency, fromCurrency) => {
 
   fetch (getAPIUrl(fromCurrency, toCurrency))
   .then ((response)=>{
