@@ -3,7 +3,7 @@
   "short_name": "ALC-CC.io",
   "description": "Check Up on Money Exchange Rate and Convert It.",
   "lang": "en-US",
-  "start_url": "/",
+  "start_url": "./",
   "display": "fullscreen",
   "orientation": "any",
   "theme_color": "#616161",
