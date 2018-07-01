@@ -161,13 +161,13 @@ const getDate = () => {
 }
 /* random colors for toast button */
 const colors = () => {
-    const colors = ['blue', 'red', 'teal', 'blue-grey', 'black']
+    const colors = ["blue", "red", "teal", "blue-grey", "black"]
   return `w3-${colors[Math.floor(Math.random() * colors.length)]}`;
 }
 
 /* get and add list of Currencies into Table for user to see */
 const getIndexDBList = () => {
-  const exchangeTable = document.querySelector('.indexDBTable');
+  const exchangeTable = document.querySelector(".indexDBTable");
   localIndexStorage.open().then((idbase) => {
     return localIndexStorage.getAllExchangeRate(idbase)
   })
@@ -176,7 +176,7 @@ const getIndexDBList = () => {
     
     let $count = 0;
      localResponse.sort((a, b) => {
-         const dateA = new Date(b.dates), 
+         const dateA = new Date(b.dates);
          const dateB = new Date(a.dates);
          return dateA - dateB;
      });
