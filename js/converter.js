@@ -173,8 +173,13 @@ const getIndexDBList = () => {
   })
   .then((localResponse) => {
     if (!localResponse)         return;
-    console.log(localResponse)
+    
     let $count = 0;
+     localResponse.sort((a, b) => {
+         const dateA = new Date(b.dates), 
+         const dateB = new Date(a.dates);
+         return dateA - dateB;
+     });
       for (let cur of localResponse) {
         if ($count > 5) return;
         let curr = cur['id'].split('_');
