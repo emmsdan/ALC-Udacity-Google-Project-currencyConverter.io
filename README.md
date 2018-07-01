@@ -1,11 +1,12 @@
-#ALC3.0 Currency Converter
+# ALC3.0 Currency Converter
   
   It's a Progressive Web application, that allows it users to freely convert currencies, right from their Web Browser quickly and conveniently.  
 ## Here is the Link to the Project (http://bit.ly/EmmsDanALCProject)
-  `AUTHOR'S NAME: EMMANUEL DANIEL
-  AUTHOR'S SLACK USERNAME: EMMSDAN
-  AUTHOR'S MEDIUM USERNAME: EMMSDAN
-  AUTHOR'S GITHUB USERNAME: EMMSDAN`
+
+  `AUTHOR'S NAME: EMMANUEL DANIEL`
+  `AUTHOR'S SLACK USERNAME: EMMSDAN`
+  `AUTHOR'S MEDIUM USERNAME: EMMSDAN`
+  `AUTHOR'S GITHUB USERNAME: EMMSDAN`
 
 ## ARCHITECTURE
 
