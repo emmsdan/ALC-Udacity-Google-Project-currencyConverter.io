@@ -95,7 +95,7 @@ const getCurrency = () => {
     return response.json();
   })
   .then ((jsonResponse)=>{
-    const currency = jsonResponse.results.sort(compare);
+    const currency = jsonResponse.results;
     let currencySymbol = '';
     for(let key in currency){
       currencySymbol = currency[key].currencySymbol !== undefined ? `-${currency[key].currencySymbol}-` : '';
@@ -105,19 +105,6 @@ const getCurrency = () => {
   .catch ((e)=>{
     notify.innerText = e;
   })
-}
-/* sort objects */
-const compare = (a, b) => {
-  const bigA = a.currencyName.toUpperCase();
-  const bigB = b.currencyName.toUpperCase();
-  
-  let comparison = 0;
-  if (bigA > bigB) {
-    comparison = 1;
-  } else if (bigA < bigB) {
-    comparison = -1;
-  }
-  return comparison;
 }
 
 /*
