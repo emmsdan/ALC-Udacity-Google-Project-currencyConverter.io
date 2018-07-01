@@ -164,3 +164,32 @@ const colors = () => {
     const colors = ['blue', 'red', 'teal', 'blue-grey', 'black']
   return `w3-${colors[Math.floor(Math.random() * colors.length)]}`;
 }
+
+/* get and add list of Currencies into Table for user to see */
+const getIndexDBList = () => {
+  const exchangeTable = document.querySelector('.indexDBTable');
+  localIndexStorage.open().then((idbase) => {
+    return localIndexStorage.getAllExchangeRate(idbase)
+  })
+  .then((localResponse) => {
+    if (!localResponse)         return;
+    console.log(localResponse)
+    let $count = 0;
+      for (let cur of localResponse) {
+        if ($count > 5) return;
+        let curr = cur['id'].split('_');
+        exchangeTable.innerHTML += `<tr class="w3-hover-shadow w3-hover-blue-gray">
+        <td>${curr[0]} to ${curr[1]} </td>
+        <td> ${cur.value}</td>
+        <td> ${cur.dates}</td>
+        </tr>`;
+        $count ++;
+      }
+    })
+  .catch((error) => {
+    return console.log(error);
+  });
+}
+setInterval(
+  getIndexDBList(),
+  2000);
