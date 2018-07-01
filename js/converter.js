@@ -195,6 +195,3 @@ const getIndexDBList = () => {
     return console.log(error);
   });
 }
-setInterval(
-  getIndexDBList(),
-  2000);
