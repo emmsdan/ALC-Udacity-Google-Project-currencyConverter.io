@@ -177,8 +177,8 @@ const getIndexDBList = () => {
     
     let $count = 0;
      localResponse.sort((a, b) => {
-         const dateA = new Date(b.dates);
-         const dateB = new Date(a.dates);
+         const dateA = new Date(a.dates);
+         const dateB = new Date(b.dates);
          return dateA - dateB;
      });
       for (let cur of localResponse) {
