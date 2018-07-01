@@ -153,7 +153,7 @@ const checkData = () => {
 const getDate = () => {
   let date = new Date();
   let time = date.toLocaleTimeString();
-  date = `${date.getDate()}/${date.getDay()}/${date.getFullYear()}`;
+  date = `${date.getDate()}/${date.getDate()}/${date.getFullYear()}`;
   time =  time.split(':');
   const amPM = time[2].split(' ');
   hour = `${time[0]}:${time[1]} ${amPM[1]}`
