@@ -168,6 +168,7 @@ const colors = () => {
 /* get and add list of Currencies into Table for user to see */
 const getIndexDBList = () => {
   const exchangeTable = document.querySelector(".indexDBTable");
+        exchangeTable.innerHTML ='';
   localIndexStorage.open().then((idbase) => {
     return localIndexStorage.getAllExchangeRate(idbase)
   })
