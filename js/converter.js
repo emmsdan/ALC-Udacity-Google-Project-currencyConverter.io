@@ -106,7 +106,6 @@ const getCurrency = () => {
     notify.innerText = e;
   })
 }
-
 /*
   checks if exchange rate already exist in IndexDB
       if true opens and supply user
