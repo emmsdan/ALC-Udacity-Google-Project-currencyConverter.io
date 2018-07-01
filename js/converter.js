@@ -172,7 +172,7 @@ const getIndexDBList = () => {
     return localIndexStorage.getAllExchangeRate(idbase)
   })
   .then((localResponse) => {
-    if (!localResponse)         return;
+    if (!localResponse) return;
     
     let $count = 0;
      localResponse.sort((a, b) => {
